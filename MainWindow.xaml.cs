@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using VsCodeProfileCommon.Models;
@@ -136,6 +137,44 @@ public partial class MainWindow : Window
         {
             SearchBox.Clear();
             _ = RefreshIndexAsync();
+        }
+    }
+
+    private void CreateDesktopShortcut_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var exePath = Process.GetCurrentProcess().MainModule?.FileName;
+            if (string.IsNullOrWhiteSpace(exePath) || !File.Exists(exePath))
+            {
+                StatusText.Text = "Could not determine app executable path.";
+                return;
+            }
+
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            var shortcutPath = Path.Combine(desktop, "VS Code Project Search.lnk");
+
+            var shellType = Type.GetTypeFromProgID("WScript.Shell");
+            if (shellType is null)
+            {
+                StatusText.Text = "Shortcut COM service is unavailable.";
+                return;
+            }
+
+            dynamic shell = Activator.CreateInstance(shellType)!;
+            dynamic shortcut = shell.CreateShortcut(shortcutPath);
+            shortcut.TargetPath = exePath;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(exePath) ?? desktop;
+            shortcut.IconLocation = $"{exePath},0";
+            shortcut.Description = "Open recent projects across VS Code profile containers";
+            shortcut.Save();
+
+            StatusText.Text = $"Desktop shortcut created: {shortcutPath}";
+        }
+        catch (Exception ex)
+        {
+            LoggingService.Error("CreateDesktopShortcut_Click failed.", ex);
+            StatusText.Text = $"Failed to create desktop shortcut: {ex.Message}";
         }
     }
 }

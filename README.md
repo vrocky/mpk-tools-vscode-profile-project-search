@@ -28,7 +28,13 @@ The app uses:
 - Searches across all registered profile container directories.
 - Includes a `Default` profile for each profile container directory (container root with `user-data` and `extensions`).
 - Matches project path, profile name, profile path, and container directory path.
-- Lists projects by timeline rank (most recent first within each profile history list).
+- Sorts projects by recent time first (when timestamp metadata is available), then falls back to profile recency and timeline rank.
+
+## App icon and desktop shortcut
+
+- The app has an application icon (`app.ico`) used for the window and executable.
+- Click the `Desktop Shortcut` button in the main window to create/update a desktop shortcut.
+- You can also run `CreateShortcut.ps1` to generate the shortcut manually.
 
 ## Settings dialog
 
