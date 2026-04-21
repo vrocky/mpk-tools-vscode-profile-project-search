@@ -1,0 +1,50 @@
+# Build outputs
+bin/
+obj/
+out/
+publish/
+artifacts/
+
+# Visual Studio / .NET user files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+
+# IDE settings
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+project.lock.json
+packages/
+
+# Test results and coverage
+TestResults/
+coverage/
+coverage.*
+*.coverage
+
+# OS-generated files
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# WPF / temporary build artifacts
+*.g.cs
+*.g.i.cs
+*.baml
+*.cache
+*.tmp
+*.svclog
+
+# Publish profiles
+*.pubxml.user
+*.publishsettings
