@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\mpk-profile-common-libs\VsCodeProfileCommon\VsCodeProfileCommon.csproj" />
+    <ProjectReference Include="..\mpk-tools-mpk-profile-common-libs\VsCodeProfileCommon\VsCodeProfileCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>
