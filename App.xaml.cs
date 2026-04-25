@@ -1,5 +1,5 @@
 using System.Windows;
-using VsCodeProfileProjectSearch.Services;
+using VsCodeProfileCommon.Services;
 
 namespace VsCodeProfileProjectSearch;
 
@@ -7,6 +7,7 @@ public partial class App : Application
 {
 	public App()
 	{
+		LoggingService.Initialize("VsCodeProfileProjectSearch");
 		LoggingService.Info("Application starting.");
 
 		DispatcherUnhandledException += (_, args) =>

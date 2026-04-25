@@ -4,8 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using VsCodeProfileCommon.Models;
 using VsCodeProfileCommon.Services;
-using VsCodeProfileProjectSearch.Models;
-using VsCodeProfileProjectSearch.Services;
 using VsCodeProfileProjectSearch.Views;
 
 namespace VsCodeProfileProjectSearch;
@@ -39,7 +37,7 @@ public partial class MainWindow : Window
             var result = await Task.Run(() =>
             {
                 var settings = SettingsService.Load();
-                var projects = ProjectIndexService.BuildIndex(includeMissing);
+                var projects = ProjectIndexService.BuildIndex(settings, includeMissing);
                 return (settings, projects);
             });
 

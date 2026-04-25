@@ -60,7 +60,7 @@ dotnet run
 
 This app depends on the shared library at:
 
-- `..\\vscode-profile-picker\\Shared\\VsCodeProfileCommon`
+- `..\\mpk-profile-common-libs\\VsCodeProfileCommon`
 
 The shared library contains settings loading, profile scanning, and recent-project parsing so behavior stays consistent across both apps.
 
